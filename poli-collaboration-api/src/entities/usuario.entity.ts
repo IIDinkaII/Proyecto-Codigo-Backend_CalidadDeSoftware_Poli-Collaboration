@@ -1,11 +1,22 @@
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToMany, OneToOne, JoinColumn } from "typeorm";
 import { IsEmail } from "class-validator";
+import { EstadoUsuario } from "./estado-usuario.entity";
+import { UsuarioRol } from "./usuario-rol.entity";
+import { PerfilUsuario } from "./pefil-usuario.entity";
 
-@Entity()
+@Entity("Usuario")
 export class Usuario{
 
     @PrimaryGeneratedColumn({name: 'id_usuario'})
     idUsuario: number;
+
+    @ManyToOne(() => EstadoUsuario, estado => estado.usuarios)
+    @JoinColumn({name: "id_estado_usuario"})
+    estado: EstadoUsuario;
+
+    @OneToOne(() => PerfilUsuario)
+    @JoinColumn({name: 'id_perfil_usuario'})
+    perfil: PerfilUsuario;
 
     @Column({name: 'correo_institucional'})
     @IsEmail()
@@ -34,4 +45,9 @@ export class Usuario{
 
     @Column({name: 'ultima_actualizacion'})
     ultimaActualizacion : Date
+
+    @OneToMany(() => UsuarioRol, usuarioRol => usuarioRol.usuario)
+    usuariosRol : UsuarioRol[]
+
+
 }

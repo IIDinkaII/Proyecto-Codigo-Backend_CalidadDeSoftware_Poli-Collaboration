@@ -1,5 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
-import { IsEmail } from "class-validator";
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToMany, JoinColumn } from "typeorm";
+import { Usuario } from "./usuario.entity";
 
 @Entity({name: 'Estado_Usuario'})
 export class EstadoUsuario{
@@ -15,4 +15,7 @@ export class EstadoUsuario{
 
     @Column({name: 'ultima_actualizacion'})
     ultimaActualizacion : Date
+
+    @OneToMany(() => Usuario, usuario => usuario.estado)
+    usuarios: Usuario[];
 }

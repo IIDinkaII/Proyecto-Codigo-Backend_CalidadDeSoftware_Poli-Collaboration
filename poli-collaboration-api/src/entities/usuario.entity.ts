@@ -3,6 +3,7 @@ import { IsEmail } from "class-validator";
 import { EstadoUsuario } from "./estado-usuario.entity";
 import { UsuarioRol } from "./usuario-rol.entity";
 import { PerfilUsuario } from "./pefil-usuario.entity";
+import { Publicacion } from "./publicacion.entity";
 
 @Entity("Usuario")
 export class Usuario{
@@ -49,5 +50,6 @@ export class Usuario{
     @OneToMany(() => UsuarioRol, usuarioRol => usuarioRol.usuario)
     usuariosRol : UsuarioRol[]
 
-
+    @OneToMany(() => Publicacion, publicacion => publicacion.usuario)
+    publicaciones : Publicacion[]
 }

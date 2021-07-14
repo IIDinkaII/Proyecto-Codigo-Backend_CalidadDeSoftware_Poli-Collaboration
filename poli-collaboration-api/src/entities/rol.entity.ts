@@ -1,7 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToMany } from "typeorm";
 import { Accion } from "./accion.entity";
 import { UsuarioRol } from "./usuario-rol.entity";
-import { Usuario } from "./usuario.entity";
 
 @Entity({name: 'Rol'})
 export class Rol{

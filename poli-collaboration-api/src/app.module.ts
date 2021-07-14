@@ -8,11 +8,11 @@ import { LoginModule } from './usuarios/login.module';
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'poli.coi1ljpzniw0.us-west-1.rds.amazonaws.com',
+      host: '#',
       port: 5432,
-      username: 'postgres',
-      password: 'admin123',
-      database: 'poli',
+      username: '#',
+      password: '#',
+      database: '#',
       entities: ['dist/**/*.entity{.ts,.js}'],
       synchronize: false,
       retryDelay: 3000,

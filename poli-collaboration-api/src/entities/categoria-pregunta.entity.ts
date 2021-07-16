@@ -2,8 +2,7 @@ import {
   Entity,
   Column,
   PrimaryGeneratedColumn,
-  ManyToOne,
-  OneToMany,
+  OneToMany
 } from 'typeorm';
 import { Pregunta } from './pregunta.entity';
 
@@ -12,7 +11,7 @@ export class CategoriaPregunta {
   @PrimaryGeneratedColumn({ name: 'id_categoria_pregunta' })
   idCategoriaPregunta: number;
 
-  @OneToMany(() => Pregunta, (pregunta) => pregunta.categoria)
+  @OneToMany(() => Pregunta, (pregunta) => pregunta.categoriaPregunta)
   preguntas: Pregunta[];
 
   @Column({ name: 'nombre_categoria' })

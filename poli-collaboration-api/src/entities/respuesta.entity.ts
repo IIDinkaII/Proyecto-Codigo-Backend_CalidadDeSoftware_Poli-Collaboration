@@ -7,7 +7,7 @@ import {
   JoinColumn,
   OneToMany,
 } from 'typeorm';
-import { CategoriaPregunta } from './categoria-pregunta.interface';
+import { CategoriaPregunta } from './categoria-pregunta.entity';
 import { Pregunta } from './pregunta.entity';
 import { Publicacion } from './publicacion.entity';
 import { Usuario } from './usuario.entity';

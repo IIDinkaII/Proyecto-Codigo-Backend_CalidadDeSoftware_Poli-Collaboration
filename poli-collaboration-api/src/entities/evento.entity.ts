@@ -8,7 +8,6 @@ import {
   JoinColumn,
 } from 'typeorm';
 import { CategoriaEvento } from './categoria-evento.entity';
-import { Pregunta } from './pregunta.entity';
 import { Publicacion } from './publicacion.entity';
 
 @Entity({ name: 'Evento' })

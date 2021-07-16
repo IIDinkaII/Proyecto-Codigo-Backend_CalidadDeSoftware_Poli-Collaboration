@@ -1,55 +1,66 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToMany, OneToOne, JoinColumn } from "typeorm";
-import { IsEmail } from "class-validator";
-import { EstadoUsuario } from "./estado-usuario.entity";
-import { UsuarioRol } from "./usuario-rol.entity";
-import { PerfilUsuario } from "./pefil-usuario.entity";
-import { Publicacion } from "./publicacion.entity";
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  OneToMany,
+  OneToOne,
+  JoinColumn,
+} from 'typeorm';
+import { IsEmail } from 'class-validator';
+import { EstadoUsuario } from './estado-usuario.entity';
+import { UsuarioRol } from './usuario-rol.entity';
+import { PerfilUsuario } from './pefil-usuario.entity';
+import { Publicacion } from './publicacion.entity';
+import { Respuesta } from './respuesta.entity';
 
-@Entity("Usuario")
-export class Usuario{
+@Entity('Usuario')
+export class Usuario {
+  @PrimaryGeneratedColumn({ name: 'id_usuario' })
+  idUsuario: number;
 
-    @PrimaryGeneratedColumn({name: 'id_usuario'})
-    idUsuario: number;
+  @ManyToOne(() => EstadoUsuario, (estado) => estado.usuarios)
+  @JoinColumn({ name: 'id_estado_usuario' })
+  estado: EstadoUsuario;
 
-    @ManyToOne(() => EstadoUsuario, estado => estado.usuarios)
-    @JoinColumn({name: "id_estado_usuario"})
-    estado: EstadoUsuario;
+  @OneToOne(() => PerfilUsuario)
+  @JoinColumn({ name: 'id_perfil_usuario' })
+  perfil: PerfilUsuario;
 
-    @OneToOne(() => PerfilUsuario)
-    @JoinColumn({name: 'id_perfil_usuario'})
-    perfil: PerfilUsuario;
+  @OneToMany(() => UsuarioRol, (usuarioRol) => usuarioRol.usuario)
+  usuariosRol: UsuarioRol[];
 
-    @Column({name: 'correo_institucional'})
-    @IsEmail()
-    correoInstitucional : string
+  @OneToMany(() => Publicacion, (publicacion) => publicacion.usuario)
+  publicaciones: Publicacion[];
 
-    @Column({name: 'nombres'})
-    nombres : string
+  @OneToMany(() => Respuesta, (respuesta) => respuesta.usuario)
+  respuestas: Respuesta[];
 
-    @Column({name: 'apellidos'})
-    apellidos : string
+  @Column({ name: 'correo_institucional' })
+  @IsEmail()
+  correoInstitucional: string;
 
-    @Column({name: 'fecha_nacimiento'})
-    fechaNacimiento : Date
+  @Column({ name: 'nombres' })
+  nombres: string;
 
-    @Column({name: 'carrera'})
-    carrera : String
+  @Column({ name: 'apellidos' })
+  apellidos: string;
 
-    @Column({name: 'facultad'})
-    facultad : String
+  @Column({ name: 'fecha_nacimiento' })
+  fechaNacimiento: Date;
 
-    @Column({name: 'password'})
-    password : String
+  @Column({ name: 'carrera' })
+  carrera: String;
 
-    @Column({name: 'fecha_creacion'})
-    fechaCreacion : Date
+  @Column({ name: 'facultad' })
+  facultad: String;
 
-    @Column({name: 'ultima_actualizacion'})
-    ultimaActualizacion : Date
+  @Column({ name: 'password' })
+  password: String;
 
-    @OneToMany(() => UsuarioRol, usuarioRol => usuarioRol.usuario)
-    usuariosRol : UsuarioRol[]
+  @Column({ name: 'fecha_creacion' })
+  fechaCreacion: Date;
 
-    @OneToMany(() => Publicacion, publicacion => publicacion.usuario)
-    publicaciones : Publicacion[]
+  @Column({ name: 'ultima_actualizacion' })
+  ultimaActualizacion: Date;
 }

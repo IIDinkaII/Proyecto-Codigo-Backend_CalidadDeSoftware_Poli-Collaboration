@@ -1,11 +1,12 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
-import { LoginService } from '../services/login.service';
+import { UserService } from '../services/user.service';
 
-@Controller('api/login')
-export class LoginController {
+
+@Controller('api/user')
+export class UserController {
 
     constructor(
-        private _httpUserService : LoginService
+        private _httpUserService : UserService
     ){}
 
     @Get()
@@ -32,6 +33,4 @@ export class LoginController {
     delete(@Param('id') id:number){
         return this._httpUserService.delete(id)
     }
-
-    
 }

@@ -3,12 +3,9 @@ import {
   Entity,
   Column,
   PrimaryGeneratedColumn,
-  ManyToOne,
-  OneToMany,
   OneToOne,
   JoinColumn,
 } from 'typeorm';
-import { Denuncia } from './denuncia.entity';
 import { Publicacion } from './publicacion.entity';
 
 @Entity({ name: 'Revision' })

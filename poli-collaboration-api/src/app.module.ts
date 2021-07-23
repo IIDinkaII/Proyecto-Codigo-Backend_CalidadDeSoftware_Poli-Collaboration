@@ -2,6 +2,8 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { DenunciasModule } from './publicaciones/denuncias/denuncias.module';
+import { UsuarioModule } from './usuarios/usuario.module';
 
 @Module({
   imports: [
@@ -17,6 +19,8 @@ import { AppService } from './app.service';
       retryDelay: 3000,
       retryAttempts: 10,
     }),
+    DenunciasModule,
+    UsuarioModule,
   ],
   controllers: [AppController],
   providers: [AppService],

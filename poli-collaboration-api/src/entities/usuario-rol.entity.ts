@@ -1,7 +1,7 @@
 import { isNotEmpty, IsNotEmpty, isNotEmptyObject } from 'class-validator';
 import { Entity, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm';
 import { Rol } from './rol.entity';
-import { Usuario } from './usuario.entity';
+import { Usuario } from '../usuarios/entities/usuario.entity';
 
 @Entity({ name: 'Usuario_Rol' })
 export class UsuarioRol {

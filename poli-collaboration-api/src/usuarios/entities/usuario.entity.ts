@@ -9,10 +9,10 @@ import {
 } from 'typeorm';
 import { IsDate, IsEmail, IsNotEmpty, isString, IsString, isValidationOptions, Length, MinLength, validate } from 'class-validator';
 import { EstadoUsuario } from './estado-usuario.entity';
-import { UsuarioRol } from './usuario-rol.entity';
+import { UsuarioRol } from '../../entities/usuario-rol.entity';
 import { PerfilUsuario } from './pefil-usuario.entity';
-import { Publicacion } from './publicacion.entity';
-import { Respuesta } from './respuesta.entity';
+import { Publicacion } from '../../publicaciones/entities/publicacion.entity';
+import { Respuesta } from '../../publicaciones/preguntas/entities/respuesta.entity';
 //import { ValidationTypes } from 'class-validator';
 
 @Entity('Usuario')

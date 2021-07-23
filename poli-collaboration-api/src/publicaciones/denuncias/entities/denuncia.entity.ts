@@ -7,8 +7,8 @@ import {
   OneToOne,
   JoinColumn,
 } from 'typeorm';
-import { Publicacion } from './publicacion.entity';
 import { IsDate, IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { Publicacion } from 'src/publicaciones/entities/publicacion.entity';
 
 
 @Entity({ name: 'Denuncia' })

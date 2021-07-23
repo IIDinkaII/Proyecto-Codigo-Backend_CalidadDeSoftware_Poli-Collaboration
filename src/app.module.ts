@@ -10,6 +10,7 @@ import { environments } from './enviroments';
 import config from './config';
 
 import * as Joi from 'joi';
+import { DatabaseModule } from './database/database.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import * as Joi from 'joi';
         DATABASE_PORT: Joi.number().required(),
       }),
     }),
+    DatabaseModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'poli.coi1ljpzniw0.us-west-1.rds.amazonaws.com',

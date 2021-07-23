@@ -17,6 +17,7 @@ import config from 'src/config';
           password: 'admin123',
           port: 5432,
         });
+        console.log('pgCliente: ' + pgClient);
         pgClient.connect();
       },
       inject: [config.KEY],

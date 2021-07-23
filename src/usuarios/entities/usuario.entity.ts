@@ -36,15 +36,15 @@ export class Usuario {
 
   @OneToOne(() => PerfilUsuario)
   @JoinColumn({ name: 'idPerfilUsuario' })
-  @IsNotEmpty()
+  /*@IsNotEmpty()*/
   perfil: PerfilUsuario;
 
   @OneToMany(() => UsuarioRol, (usuarioRol) => usuarioRol.usuario)
-  @IsNotEmpty()
+  /*@IsNotEmpty()*/
   usuariosRol: UsuarioRol[];
 
   @OneToMany(() => Publicacion, (publicacion) => publicacion.usuario)
-  @IsNotEmpty()
+  /*@IsNotEmpty()*/
   publicaciones: Publicacion[];
 
   @OneToMany(() => Respuesta, (respuesta) => respuesta.usuario)

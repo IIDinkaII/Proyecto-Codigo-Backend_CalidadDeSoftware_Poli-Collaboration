@@ -8,20 +8,7 @@ import { PartialType } from '@nestjs/swagger';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CrearUsuarioDto {
-  @IsNumber()
-  @IsNotEmpty()
-  readonly id_usuario: number;
-  @IsNotEmpty()
-  @ApiProperty({ description: 'estado del usuario' })
-  readonly estado: EstadoUsuario;
-  @IsNotEmpty()
-  readonly perfil: PerfilUsuario;
-  @IsNotEmpty()
-  readonly usuariosRol: UsuarioRol[];
-  @IsNotEmpty()
-  readonly publicaciones: Publicacion[];
-  @IsNotEmpty()
-  readonly respuestas: Respuesta[];
+ 
   @IsString()
   @IsNotEmpty()
   readonly correo_institucional: string;
@@ -43,12 +30,7 @@ export class CrearUsuarioDto {
   @IsString()
   @IsNotEmpty()
   readonly password: string;
-  @IsDate()
-  @IsNotEmpty()
-  readonly fecha_creacion: Date;
-  @IsDate()
-  @IsNotEmpty()
-  readonly ultima_actualizacion: Date;
+
 }
 
 export class ActualizarUsuarioDto extends PartialType(CrearUsuarioDto) {}

@@ -9,15 +9,19 @@ import config from 'src/config';
     {
       provide: 'PG',
       useFactory: (configService: ConfigType<typeof config>) => {
-        const { username, host, name, password } = configService.database;
+        const { username, host, name, password, databasePort } =
+          configService.database;
+        console.log(username, host, name, password, databasePort);
         const pgClient = new Client({
-          user: 'postgres',
-          host: 'poli.coi1ljpzniw0.us-west-1.rds.amazonaws.com',
-          database: 'poli',
-          password: 'admin123',
-          port: 5432,
+          user: username,
+          host: host,
+          database: name,
+          password: password,
+          port: databasePort,
         });
+        console.log('pgCliente: ' + pgClient);
         pgClient.connect();
+        return pgClient;
       },
       inject: [config.KEY],
     },

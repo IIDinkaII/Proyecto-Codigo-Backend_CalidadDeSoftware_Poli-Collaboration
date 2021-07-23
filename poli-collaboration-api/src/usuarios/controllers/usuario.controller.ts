@@ -18,7 +18,7 @@ export class UsuarioController {
   constructor(private _httpUserService: UsuarioService) {}
 
   @Get()
-  @ApiOperation({ summary: 'List of users' })
+  @ApiOperation({ summary: 'Lista de usuarios' })
   getAll() {
     return this._httpUserService.findAll();
   }

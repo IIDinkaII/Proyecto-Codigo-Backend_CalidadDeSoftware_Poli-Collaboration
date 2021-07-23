@@ -1,13 +1,24 @@
-import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  ParseIntPipe,
+  Post,
+  Put,
+} from '@nestjs/common';
 import { UsuarioService } from '../services/usuario.service';
-import {CrearUsuarioDto} from '../dtos/usuario.dtos'
-import {ActualizarUsuarioDto} from '../dtos/usuario.dtos'
+import { CrearUsuarioDto, ActualizarUsuarioDto } from '../dtos/usuario.dto';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
 
-@Controller('api/user')
+@ApiTags('usuario')
+@Controller('api/usuario')
 export class UsuarioController {
   constructor(private _httpUserService: UsuarioService) {}
 
   @Get()
+  @ApiOperation({ summary: 'List of users' })
   getAll() {
     return this._httpUserService.findAll();
   }

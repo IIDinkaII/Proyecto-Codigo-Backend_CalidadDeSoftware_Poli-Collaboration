@@ -3,8 +3,8 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { NotFoundError } from 'rxjs';
 import { Repository } from 'typeorm';
 import { Usuario } from '../entities/usuario.entity';
-import {CrearUsuarioDto} from '../dtos/usuario.dtos'
-import {ActualizarUsuarioDto} from '../dtos/usuario.dtos'
+import { CrearUsuarioDto } from '../dtos/usuario.dto';
+import { ActualizarUsuarioDto } from '../dtos/usuario.dto';
 @Injectable()
 export class UsuarioService {
   constructor(

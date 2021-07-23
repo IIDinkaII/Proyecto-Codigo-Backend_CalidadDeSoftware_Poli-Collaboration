@@ -4,13 +4,15 @@ import { UsuarioRol } from '../../entities/usuario-rol.entity';
 import { Publicacion } from '../../publicaciones/entities/publicacion.entity';
 import { Respuesta } from '../../publicaciones/preguntas/entities/respuesta.entity';
 import { IsString, IsNumber, IsDate, IsNotEmpty } from 'class-validator';
-import { PartialType } from '@nestjs/mapped-types';
+import { PartialType } from '@nestjs/swagger';
+import { ApiProperty } from '@nestjs/swagger';
 
 export class CrearUsuarioDto {
   @IsNumber()
   @IsNotEmpty()
   readonly id_usuario: number;
   @IsNotEmpty()
+  @ApiProperty({ description: 'estado del usuario' })
   readonly estado: EstadoUsuario;
   @IsNotEmpty()
   readonly perfil: PerfilUsuario;

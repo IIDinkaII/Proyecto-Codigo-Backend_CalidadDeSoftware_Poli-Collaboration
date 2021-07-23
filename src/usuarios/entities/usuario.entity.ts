@@ -7,7 +7,17 @@ import {
   OneToOne,
   JoinColumn,
 } from 'typeorm';
-import { IsDate, IsEmail, IsNotEmpty, isString, IsString, isValidationOptions, Length, MinLength, validate } from 'class-validator';
+import {
+  IsDate,
+  IsEmail,
+  IsNotEmpty,
+  isString,
+  IsString,
+  isValidationOptions,
+  Length,
+  MinLength,
+  validate,
+} from 'class-validator';
 import { EstadoUsuario } from './estado-usuario.entity';
 import { UsuarioRol } from '../../entities/usuario-rol.entity';
 import { PerfilUsuario } from './pefil-usuario.entity';
@@ -46,14 +56,12 @@ export class Usuario {
   @IsEmail()
   @IsNotEmpty()
   correoInstitucional: string;
-  
 
   @Column({ name: 'nombres' })
   @Length(5, 55)
   @IsNotEmpty()
   @IsString()
   nombres: string;
-
 
   @Column({ name: 'apellidos' })
   @Length(5, 55)
@@ -72,7 +80,7 @@ export class Usuario {
   carrera: String;
 
   @Column({ name: 'facultad' })
-  @Length(20,40)
+  @Length(20, 40)
   @IsNotEmpty()
   @IsString()
   facultad: String;

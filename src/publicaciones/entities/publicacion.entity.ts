@@ -8,7 +8,6 @@ import {
 import { Usuario } from '../../usuarios/entities/usuario.entity';
 import { IsDate, IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
-
 @Entity({ name: 'Publicacion' })
 export class Publicacion {
   @PrimaryGeneratedColumn({ name: 'id_publicacion' })

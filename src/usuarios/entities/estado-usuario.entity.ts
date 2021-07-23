@@ -9,7 +9,6 @@ import {
 import { Usuario } from './usuario.entity';
 import { IsDate, IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
-
 @Entity({ name: 'Estado_Usuario' })
 export class EstadoUsuario {
   @PrimaryGeneratedColumn({ name: 'id_estado_usuario' })

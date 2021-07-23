@@ -1,9 +1,4 @@
-import {
-  Entity,
-  Column,
-  PrimaryGeneratedColumn,
-  OneToMany
-} from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 import { Pregunta } from './pregunta.entity';
 import { IsDate, IsNotEmpty, IsNumber, IsString } from 'class-validator';
 

@@ -1,4 +1,10 @@
-import { IsAlphanumeric, IsDate, IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import {
+  IsAlphanumeric,
+  IsDate,
+  IsNotEmpty,
+  IsNumber,
+  IsString,
+} from 'class-validator';
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity({ name: 'Perfil_Usuario' })

@@ -11,7 +11,6 @@ import { CategoriaEvento } from './categoria-evento.entity';
 import { Publicacion } from '../../entities/publicacion.entity';
 import { IsDate, IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
-
 @Entity({ name: 'Evento' })
 export class Evento {
   @PrimaryGeneratedColumn({ name: 'id_evento' })

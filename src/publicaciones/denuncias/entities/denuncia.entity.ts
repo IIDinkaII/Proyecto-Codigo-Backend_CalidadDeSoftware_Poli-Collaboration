@@ -10,7 +10,6 @@ import {
 import { IsDate, IsNotEmpty, IsNumber, IsString } from 'class-validator';
 import { Publicacion } from 'src/publicaciones/entities/publicacion.entity';
 
-
 @Entity({ name: 'Denuncia' })
 export class Denuncia {
   @PrimaryGeneratedColumn({ name: 'id_denuncia' })

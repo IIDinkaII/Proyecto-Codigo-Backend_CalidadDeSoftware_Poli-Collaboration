@@ -28,7 +28,10 @@ export class Pregunta {
   @IsNotEmpty()
   respuestas: Respuesta[];
 
-  @ManyToOne(() => CategoriaPregunta, (categoriaPregunta) => categoriaPregunta.preguntas)
+  @ManyToOne(
+    () => CategoriaPregunta,
+    (categoriaPregunta) => categoriaPregunta.preguntas,
+  )
   @JoinColumn({ name: 'id_categoria_pregunta' })
   categoriaPregunta: CategoriaPregunta[];
 

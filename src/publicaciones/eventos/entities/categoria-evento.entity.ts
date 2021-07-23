@@ -18,7 +18,6 @@ export class CategoriaEvento {
   @OneToMany(() => Evento, (evento) => evento.categoriaEvento)
   eventos: Evento[];
   @IsNotEmpty()
-
   @Column({ name: 'nombre_categoria' })
   @IsString()
   @IsNotEmpty()

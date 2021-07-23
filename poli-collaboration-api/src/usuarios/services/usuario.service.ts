@@ -3,6 +3,8 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { NotFoundError } from 'rxjs';
 import { Repository } from 'typeorm';
 import { Usuario } from '../entities/usuario.entity';
+import {CrearUsuarioDto} from '../dtos/usuario.dtos'
+import {ActualizarUsuarioDto} from '../dtos/usuario.dtos'
 @Injectable()
 export class UsuarioService {
   constructor(
@@ -21,12 +23,12 @@ export class UsuarioService {
     return usuario;
   }
 
-  create(body: any) {
+  create(body: CrearUsuarioDto) {
     const newUser = this.userRepo.create(body); // hace un match
     return this.userRepo.save(newUser);
   }
 
-  async update(id: number, body: any) {
+  async update(id: number, body: ActualizarUsuarioDto) {
     const user = await this.userRepo.findOne(id);
     this.userRepo.merge(user, body);
     return this.userRepo.save(user);

@@ -9,6 +9,6 @@ export default registerAs('config', () => {
       username: process.env.USERNAME,
       password: process.env.PASSWORD,
     },
+    port: process.env.PORT,
   };
-  port: process.env.PORT,
 });

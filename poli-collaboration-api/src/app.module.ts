@@ -19,10 +19,11 @@ import * as Joi from 'joi';
       isGlobal: true,
       validationSchema: Joi.object({
         HOST: Joi.string().required(),
-        PORT: Joi.number().required(),
+        PORT: Joi.number(),
         DATABASE: Joi.string().required(),
         USERNAME: Joi.string().required(),
         PASSWORD: Joi.string().required(),
+        DATABASE_PORT: Joi.number().required(),
       }),
     }),
     TypeOrmModule.forRoot({

@@ -9,27 +9,27 @@ import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity({ name: 'Perfil_Usuario' })
 export class PerfilUsuario {
-  @PrimaryGeneratedColumn({ name: 'id_perfil' })
+  @PrimaryGeneratedColumn({ name: 'idPerfil' })
   @IsNumber()
   @IsNotEmpty()
   idPerfil: number;
 
-  @Column({ name: 'numero_preguntas' })
+  @Column({ name: 'numeroPreguntas' })
   @IsNumber()
   @IsNotEmpty()
   numeroPreguntas: number;
 
-  @Column({ name: 'numero_respuestas' })
+  @Column({ name: 'numeroRespuestas' })
   @IsNumber()
   @IsNotEmpty()
   numeroRespuestas: number;
 
-  @Column({ name: 'fecha_creacion' })
+  @Column({ name: 'fechaCreacion' })
   @IsDate()
   @IsNotEmpty()
   fechaCreacion: Date;
 
-  @Column({ name: 'ultima_actualizacion' })
+  @Column({ name: 'ultimaActualizacion' })
   @IsDate()
   @IsNotEmpty()
   ultimaActualizacion: Date;

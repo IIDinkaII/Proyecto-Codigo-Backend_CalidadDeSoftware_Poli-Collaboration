@@ -13,32 +13,32 @@ import { IsDate, IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
 @Entity({ name: 'Evento' })
 export class Evento {
-  @PrimaryGeneratedColumn({ name: 'id_evento' })
+  @PrimaryGeneratedColumn({ name: 'idEvento' })
   @IsNumber()
   @IsNotEmpty()
   idEvento: number;
 
   @OneToOne(() => Publicacion)
-  @JoinColumn({ name: 'id_publicacion' })
+  @JoinColumn({ name: 'idPublicacion' })
   @IsNotEmpty()
   publicacion: Publicacion;
 
   @ManyToOne(() => CategoriaEvento, (categoria) => categoria.eventos)
-  @JoinColumn({ name: 'id_categoria' })
+  @JoinColumn({ name: 'idCategoria' })
   @IsNotEmpty()
   categoriaEvento: CategoriaEvento;
 
-  @Column({ name: 'titulo_evento' })
+  @Column({ name: 'tituloEvento' })
   @IsString()
   @IsNotEmpty()
   tituloEvento: string;
 
-  @Column({ name: 'orginazador' })
+  @Column({ name: 'organizador' })
   @IsString()
   @IsNotEmpty()
   organizador: string;
 
-  @Column({ name: 'date_time_evento' })
+  @Column({ name: 'dateTimeEvento' })
   @IsDate()
   @IsNotEmpty()
   dateTimeEvento: Date;
@@ -53,12 +53,12 @@ export class Evento {
   @IsNotEmpty()
   estado: string;
 
-  @Column({ name: 'numero_interesados' })
+  @Column({ name: 'numeroInteresados' })
   @IsNumber()
   @IsNotEmpty()
   numeroInteresados: number;
 
-  @Column({ name: 'fecha_expiracion' })
+  @Column({ name: 'fechaExpiracion' })
   @IsDate()
   @IsNotEmpty()
   fechaExpiracion: Date;

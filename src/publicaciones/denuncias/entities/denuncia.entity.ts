@@ -12,22 +12,22 @@ import { Publicacion } from 'src/publicaciones/entities/publicacion.entity';
 
 @Entity({ name: 'Denuncia' })
 export class Denuncia {
-  @PrimaryGeneratedColumn({ name: 'id_denuncia' })
+  @PrimaryGeneratedColumn({ name: 'idDenuncia' })
   @IsNumber()
   @IsNotEmpty()
   idDenuncia: number;
 
   @OneToOne(() => Publicacion)
-  @JoinColumn({ name: 'id_publicacion' })
+  @JoinColumn({ name: 'idPublicacion' })
   @IsNotEmpty()
   publicacion: Publicacion;
 
-  @Column({ name: 'modo_canal' })
+  @Column({ name: 'modoCanal' })
   @IsString()
   @IsNotEmpty()
   modoCanal: string;
 
-  @Column({ name: 'telefono_contacto' })
+  @Column({ name: 'telefonoContacto' })
   @IsString()
   @IsNotEmpty()
   telefonoContacto: string;
@@ -37,12 +37,12 @@ export class Denuncia {
   @IsNotEmpty()
   estado: string;
 
-  @Column({ name: 'tipo_denuncia' })
+  @Column({ name: 'tipoDenuncia' })
   @IsString()
   @IsNotEmpty()
   tipoDenuncia: string;
 
-  @Column({ name: 'descripcion_hechos' })
+  @Column({ name: 'descripcionHechos' })
   @IsString()
   @IsNotEmpty()
   descripcionHechos: string;

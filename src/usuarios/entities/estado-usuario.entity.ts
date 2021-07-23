@@ -11,22 +11,22 @@ import { IsDate, IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
 @Entity({ name: 'Estado_Usuario' })
 export class EstadoUsuario {
-  @PrimaryGeneratedColumn({ name: 'id_estado_usuario' })
+  @PrimaryGeneratedColumn({ name: 'idEstadoUsuario' })
   @IsNumber()
   @IsNotEmpty()
   idEstadoUsuario: number;
 
-  @Column({ name: 'nombre_estado_usuario' })
+  @Column({ name: 'nombreEstadoUsuario' })
   @IsString()
   @IsNotEmpty()
   nombreEstadoUsuario: string;
 
-  @Column({ name: 'fecha_creacion' })
+  @Column({ name: 'fechaCreacion' })
   @IsDate()
   @IsNotEmpty()
   fechaCreacion: Date;
 
-  @Column({ name: 'ultima_actualizacion' })
+  @Column({ name: 'ultimaActualizacion' })
   @IsDate()
   @IsNotEmpty()
   ultimaActualizacion: Date;

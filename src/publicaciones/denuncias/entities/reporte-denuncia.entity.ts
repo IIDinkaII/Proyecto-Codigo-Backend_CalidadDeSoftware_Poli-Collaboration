@@ -12,23 +12,23 @@ import { IsDate, IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
 @Entity({ name: 'Reporte_Denuncia' })
 export class ReporteDenuncia {
-  @PrimaryGeneratedColumn({ name: 'id_reporte_denuncia' })
+  @PrimaryGeneratedColumn({ name: 'idReporteDenuncia' })
   @IsNotEmpty()
   @IsNumber()
   idReporteDenuncia: number;
 
-  @Column({ name: 'id_denuncia' })
+  @Column({ name: 'idDenuncia' })
   @IsNotEmpty()
   @IsString()
   idDenuncia: string;
 
   @OneToOne(() => Revision)
-  @JoinColumn({ name: 'id_revision' })
+  @JoinColumn({ name: 'idRevision' })
   @IsNotEmpty()
   @IsNumber()
   idRevision: number;
 
-  @Column({ name: 'acciones_tomadas' })
+  @Column({ name: 'accionesTomadas' })
   @IsNotEmpty()
   @IsString()
   accionesTomadas: string;
@@ -43,12 +43,12 @@ export class ReporteDenuncia {
   @IsString()
   evidencia: string;
 
-  @Column({ name: 'fecha_creacion' })
+  @Column({ name: 'fechaCreacion' })
   @IsDate()
   @IsNotEmpty()
   fechaCreacion: Date;
 
-  @Column({ name: 'ultima_actualizacion' })
+  @Column({ name: 'ultimaActualizacion' })
   @IsDate()
   @IsNotEmpty()
   ultimaActualizacion: Date;

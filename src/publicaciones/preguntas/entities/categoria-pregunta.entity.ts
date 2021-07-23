@@ -4,7 +4,7 @@ import { IsDate, IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
 @Entity({ name: 'Categoria_Pregunta' })
 export class CategoriaPregunta {
-  @PrimaryGeneratedColumn({ name: 'id_categoria_pregunta' })
+  @PrimaryGeneratedColumn({ name: 'idCategoriaPregunta' })
   @IsNumber()
   @IsNotEmpty()
   idCategoriaPregunta: number;
@@ -13,7 +13,7 @@ export class CategoriaPregunta {
   @IsNotEmpty()
   preguntas: Pregunta[];
 
-  @Column({ name: 'nombre_categoria' })
+  @Column({ name: 'nombreCategoria' })
   @IsString()
   @IsNotEmpty()
   nombreCategoria: string;
@@ -23,12 +23,12 @@ export class CategoriaPregunta {
   @IsNotEmpty()
   descripcion: string;
 
-  @Column({ name: 'fecha_creacion' })
+  @Column({ name: 'fechaCreacion' })
   @IsDate()
   @IsNotEmpty()
   fechaCreacion: Date;
 
-  @Column({ name: 'ultima_actualizacion' })
+  @Column({ name: 'ultimaActualizacion' })
   @IsDate()
   @IsNotEmpty()
   ultimaActualizacion: Date;

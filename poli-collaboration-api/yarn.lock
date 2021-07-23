@@ -675,6 +675,11 @@
     "tslib" "2.3.0"
     "uuid" "8.3.2"
 
+"@nestjs/mapped-types@^1.0.0":
+  "integrity" "sha512-26AW5jHadLXtvHs+M+Agd9KZ92dDlBrmD0rORlBlvn2KvsWs4JRaKl2mUsrW7YsdZeAu3Hc4ukqyYyDdyCmMWQ=="
+  "resolved" "https://registry.npmjs.org/@nestjs/mapped-types/-/mapped-types-1.0.0.tgz"
+  "version" "1.0.0"
+
 "@nestjs/platform-express@^8.0.0":
   "integrity" "sha512-HOqxVcOb70ixZe+oIBcrbKs/5FePFC1VIHlURQc6o4kAPOdSskuns689sNFkd+nW+CXQ1WxmOl2ODxpi0yGwVg=="
   "resolved" "https://registry.npmjs.org/@nestjs/platform-express/-/platform-express-8.0.1.tgz"

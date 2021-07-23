@@ -11,22 +11,22 @@ import { UsuarioRol } from './usuario-rol.entity';
 
 @Entity({ name: 'Rol' })
 export class Rol {
-  @PrimaryGeneratedColumn({ name: 'id_rol' })
+  @PrimaryGeneratedColumn({ name: 'idRol' })
   @IsNotEmpty()
   @IsNumber()
   idRol: number;
 
-  @Column({ name: 'nombre_rol' })
+  @Column({ name: 'nombreRol' })
   @IsNotEmpty()
   @IsString()
   nombreRol: string;
 
-  @Column({ name: 'fecha_creacion' })
+  @Column({ name: 'fechaCreacion' })
   @IsDate()
   @IsNotEmpty()
   fechaCreacion: Date;
 
-  @Column({ name: 'ultima_actualizacion' })
+  @Column({ name: 'ultimaActualizacion' })
   @IsDate()
   @IsNotEmpty()
   ultimaActualizacion: Date;

@@ -10,13 +10,13 @@ import { Publicacion } from './publicacion.entity';
 
 @Entity({ name: 'Revision' })
 export class Revision {
-  @PrimaryGeneratedColumn({ name: 'id_revision' })
+  @PrimaryGeneratedColumn({ name: 'idRevision' })
   @IsNotEmpty()
   @IsNumber()
   idRevision: number;
 
   @OneToOne(() => Publicacion)
-  @JoinColumn({ name: 'id_publicacion' })
+  @JoinColumn({ name: 'idPublicacion' })
   @IsNotEmpty()
   @IsNumber()
   idPublicacion: number;
@@ -26,17 +26,17 @@ export class Revision {
   @IsString()
   observacion: string;
 
-  @Column({ name: 'fecha_gestion' })
+  @Column({ name: 'fechaGestion' })
   @IsDate()
   @IsNotEmpty()
   fechaGestion: Date;
 
-  @Column({ name: 'fecha_creacion' })
+  @Column({ name: 'fechaCreacion' })
   @IsDate()
   @IsNotEmpty()
   fechaCreacion: Date;
 
-  @Column({ name: 'fecha_actualizacion' })
+  @Column({ name: 'fechaActualizacion' })
   @IsDate()
   @IsNotEmpty()
   fechaActualizacion: Date;

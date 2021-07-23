@@ -10,22 +10,22 @@ import { IsDate, IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
 @Entity({ name: 'Publicacion' })
 export class Publicacion {
-  @PrimaryGeneratedColumn({ name: 'id_publicacion' })
+  @PrimaryGeneratedColumn({ name: 'idPublicacion' })
   @IsNumber()
   @IsNotEmpty()
   idPublicacion: number;
 
   @ManyToOne(() => Usuario, (usuario) => usuario.publicaciones)
-  @JoinColumn({ name: 'id_usuario' })
+  @JoinColumn({ name: 'idUsuario' })
   @IsNotEmpty()
   usuario: Usuario;
 
-  @Column({ name: 'fecha_creacion' })
+  @Column({ name: 'fechaCreacion' })
   @IsDate()
   @IsNotEmpty()
   fechaCreacion: Date;
 
-  @Column({ name: 'ultima_actualizacion' })
+  @Column({ name: 'ultimaActualizacion' })
   @IsDate()
   @IsNotEmpty()
   ultimaActualizacion: Date;

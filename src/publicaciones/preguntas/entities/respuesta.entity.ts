@@ -15,18 +15,18 @@ import { Usuario } from '../../../usuarios/entities/usuario.entity';
 
 @Entity({ name: 'Respuesta' })
 export class Respuesta {
-  @PrimaryGeneratedColumn({ name: 'id_respuesta' })
+  @PrimaryGeneratedColumn({ name: 'idRespuesta' })
   @IsNotEmpty()
   @IsNumber()
   idRespuesta: number;
 
   @ManyToOne(() => Pregunta, (pregunta) => pregunta.respuestas)
-  @JoinColumn({ name: 'id_pregunta' })
+  @JoinColumn({ name: 'idPregunta' })
   @IsNotEmpty()
   pregunta: Pregunta;
 
   @ManyToOne(() => Usuario, (usuario) => usuario.respuestas)
-  @JoinColumn({ name: 'id_usuario' })
+  @JoinColumn({ name: 'idUsuario' })
   @IsNotEmpty()
   usuario: Respuesta;
 

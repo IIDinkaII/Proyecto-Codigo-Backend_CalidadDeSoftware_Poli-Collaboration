@@ -27,15 +27,15 @@ import { Respuesta } from '../../publicaciones/preguntas/entities/respuesta.enti
 
 @Entity('Usuario')
 export class Usuario {
-  @PrimaryGeneratedColumn({ name: 'id_usuario' })
+  @PrimaryGeneratedColumn({ name: 'idUsuario' })
   idUsuario: number;
 
   @ManyToOne(() => EstadoUsuario, (estado) => estado.usuarios)
-  @JoinColumn({ name: 'id_estado_usuario' })
+  @JoinColumn({ name: 'idEstadoUsuario' })
   estado: EstadoUsuario;
 
   @OneToOne(() => PerfilUsuario)
-  @JoinColumn({ name: 'id_perfil_usuario' })
+  @JoinColumn({ name: 'idPerfilUsuario' })
   @IsNotEmpty()
   perfil: PerfilUsuario;
 
@@ -51,7 +51,7 @@ export class Usuario {
   @IsNotEmpty()
   respuestas: Respuesta[];
 
-  @Column({ name: 'correo_institucional' })
+  @Column({ name: 'correoInstitucional' })
   //@ValidationTypes.isValid(correoIn);
   @IsEmail()
   @IsNotEmpty()
@@ -69,7 +69,7 @@ export class Usuario {
   @IsString()
   apellidos: string;
 
-  @Column({ name: 'fecha_nacimiento' })
+  @Column({ name: 'fechaNacimiento' })
   @IsDate()
   @IsNotEmpty()
   fechaNacimiento: Date;
@@ -91,12 +91,12 @@ export class Usuario {
   @IsString()
   password: String;
 
-  @Column({ name: 'fecha_creacion' })
+  @Column({ name: 'fechaCreacion' })
   @IsDate()
   @IsNotEmpty()
   fechaCreacion: Date;
 
-  @Column({ name: 'ultima_actualizacion' })
+  @Column({ name: 'ultimaActualizacion' })
   @IsDate()
   @IsNotEmpty()
   ultimaActualizacion: Date;

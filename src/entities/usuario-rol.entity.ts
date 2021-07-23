@@ -5,17 +5,17 @@ import { Usuario } from '../usuarios/entities/usuario.entity';
 
 @Entity({ name: 'Usuario_Rol' })
 export class UsuarioRol {
-  @PrimaryGeneratedColumn({ name: 'id_usuario_rol' })
+  @PrimaryGeneratedColumn({ name: 'idUsuarioRol' })
   @IsNotEmpty()
   idUsuarioRol: number;
 
   @ManyToOne(() => Usuario, (usuario) => usuario.usuariosRol)
-  @JoinColumn({ name: 'id_usuario' })
+  @JoinColumn({ name: 'idUsuario' })
   @IsNotEmpty()
   usuario: Usuario;
 
   @ManyToOne(() => Rol, (rol) => rol.usuariosRol)
-  @JoinColumn({ name: 'id_rol' })
+  @JoinColumn({ name: 'idRol' })
   @IsNotEmpty()
   rol: Rol;
 }

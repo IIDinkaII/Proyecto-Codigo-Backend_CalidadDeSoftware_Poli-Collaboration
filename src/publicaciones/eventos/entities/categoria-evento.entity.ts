@@ -10,7 +10,7 @@ import { IsDate, IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
 @Entity({ name: 'Categoria_Evento' })
 export class CategoriaEvento {
-  @PrimaryGeneratedColumn({ name: 'id_categoria_evento' })
+  @PrimaryGeneratedColumn({ name: 'idCategoriaEvento' })
   @IsNumber()
   @IsNotEmpty()
   idCategoriaEvento: number;
@@ -18,7 +18,7 @@ export class CategoriaEvento {
   @OneToMany(() => Evento, (evento) => evento.categoriaEvento)
   eventos: Evento[];
   @IsNotEmpty()
-  @Column({ name: 'nombre_categoria' })
+  @Column({ name: 'nombreCategoria' })
   @IsString()
   @IsNotEmpty()
   nombreCategoria: string;
@@ -28,12 +28,12 @@ export class CategoriaEvento {
   @IsNotEmpty()
   descripcion: string;
 
-  @Column({ name: 'fecha_creacion' })
+  @Column({ name: 'fechaCreacion' })
   @IsDate()
   @IsNotEmpty()
   fechaCreacion: Date;
 
-  @Column({ name: 'ultima_actualizacion' })
+  @Column({ name: 'ultimaActualizacion' })
   @IsDate()
   @IsNotEmpty()
   ultimaActualizacion: Date;

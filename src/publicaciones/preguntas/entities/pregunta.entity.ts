@@ -14,13 +14,13 @@ import { Respuesta } from './respuesta.entity';
 
 @Entity({ name: 'Pregunta' })
 export class Pregunta {
-  @PrimaryGeneratedColumn({ name: 'id_pregunta' })
+  @PrimaryGeneratedColumn({ name: 'idPregunta' })
   @IsNumber()
   @IsNotEmpty()
   idPregunta: number;
 
   @OneToOne(() => Publicacion)
-  @JoinColumn({ name: 'id_publicacion' })
+  @JoinColumn({ name: 'idPublicacion' })
   @IsNotEmpty()
   publicacion: Publicacion;
 
@@ -32,7 +32,7 @@ export class Pregunta {
     () => CategoriaPregunta,
     (categoriaPregunta) => categoriaPregunta.preguntas,
   )
-  @JoinColumn({ name: 'id_categoria_pregunta' })
+  @JoinColumn({ name: 'idCategoriaPregunta' })
   categoriaPregunta: CategoriaPregunta[];
 
   @Column({ name: 'titulo' })

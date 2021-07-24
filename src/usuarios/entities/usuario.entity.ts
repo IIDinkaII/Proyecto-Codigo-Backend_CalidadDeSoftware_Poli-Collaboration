@@ -6,6 +6,8 @@ import {
   OneToMany,
   OneToOne,
   JoinColumn,
+  CreateDateColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 import {
   IsDate,
@@ -18,11 +20,13 @@ import {
   MinLength,
   validate,
 } from 'class-validator';
+
 import { EstadoUsuario } from './estado-usuario.entity';
 import { UsuarioRol } from '../../entities/usuario-rol.entity';
 import { PerfilUsuario } from './pefil-usuario.entity';
 import { Publicacion } from '../../publicaciones/entities/publicacion.entity';
 import { Respuesta } from '../../publicaciones/preguntas/entities/respuesta.entity';
+import { Exclude } from 'class-transformer';
 //import { ValidationTypes } from 'class-validator';
 
 @Entity('Usuario')
@@ -48,7 +52,7 @@ export class Usuario {
   publicaciones: Publicacion[];
 
   @OneToMany(() => Respuesta, (respuesta) => respuesta.usuario)
-  @IsNotEmpty()
+  /*@IsNotEmpty()*/
   respuestas: Respuesta[];
 
   @Column({ name: 'correoInstitucional' })
@@ -77,27 +81,30 @@ export class Usuario {
   @Column({ name: 'carrera' })
   @IsNotEmpty()
   @IsString()
-  carrera: String;
+  carrera: string;
 
   @Column({ name: 'facultad' })
   @Length(20, 40)
   @IsNotEmpty()
   @IsString()
-  facultad: String;
+  facultad: string;
 
   @Column({ name: 'password' })
   @MinLength(8)
   @IsNotEmpty()
   @IsString()
-  password: String;
+  @Exclude()
+  password: string;
 
-  @Column({ name: 'fechaCreacion' })
-  @IsDate()
-  @IsNotEmpty()
+  @CreateDateColumn({
+    type: 'timestamptz',
+    default: () => 'CURRENT_TIMESTAMP',
+  })
   fechaCreacion: Date;
 
-  @Column({ name: 'ultimaActualizacion' })
-  @IsDate()
-  @IsNotEmpty()
+  @UpdateDateColumn({
+    type: 'timestamptz',
+    default: () => 'CURRENT_TIMESTAMP',
+  })
   ultimaActualizacion: Date;
 }

@@ -15,8 +15,8 @@ export class UsuarioService {
     return this.userRepo.find();
   }
 
-  findOne(id: number) {
-    const usuario = this.userRepo.findOne(id);
+  async findOne(id: number) {
+    const usuario = await this.userRepo.findOne(id);
     if (!usuario) {
       throw new NotFoundError(`Product #${id} not found`);
     }

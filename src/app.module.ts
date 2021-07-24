@@ -11,6 +11,7 @@ import config from './config';
 
 import * as Joi from 'joi';
 import { DatabaseModule } from './database/database.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -25,11 +26,13 @@ import { DatabaseModule } from './database/database.module';
         DB_USERNAME: Joi.string().required(),
         PASSWORD: Joi.string().required(),
         DATABASE_PORT: Joi.number().required(),
+        API_KET: Joi.string(),
       }),
     }),
     DatabaseModule,
     DenunciasModule,
     UsuarioModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

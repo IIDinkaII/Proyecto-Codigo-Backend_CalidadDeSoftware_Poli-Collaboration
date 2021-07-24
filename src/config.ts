@@ -10,5 +10,6 @@ export default registerAs('config', () => {
       password: process.env.PASSWORD,
     },
     port: process.env.PORT,
+    apiKey: process.env.API_KEY,
   };
 });

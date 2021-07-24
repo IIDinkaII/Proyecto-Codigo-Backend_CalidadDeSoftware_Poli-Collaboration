@@ -11,6 +11,7 @@ import {
 import { UsuarioService } from '../services/usuario.service';
 import { CrearUsuarioDto, ActualizarUsuarioDto } from '../dtos/usuario.dto';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import * as bcrypt from 'bcrypt';
 
 @ApiTags('usuario')
 @Controller('api/usuario')
@@ -29,8 +30,11 @@ export class UsuarioController {
   }
 
   @Post()
-  create(@Body() body: CrearUsuarioDto) {
-    return this._httpUserService.create(body);
+  async create(@Body() usuario: CrearUsuarioDto) {
+    const nuevoUsuario = await this._httpUserService.create(usuario);
+    const hashPassword = await bcrypt.hash(nuevoUsuario.password, 10);
+    nuevoUsuario.password = hashPassword;
+    return this._httpUserService.create(usuario);
   }
 
   @Put(':id')

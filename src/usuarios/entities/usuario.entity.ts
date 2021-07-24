@@ -102,6 +102,7 @@ export class Usuario {
   })
   fechaCreacion: Date;
 
+  @Exclude()
   @UpdateDateColumn({
     type: 'timestamptz',
     default: () => 'CURRENT_TIMESTAMP',

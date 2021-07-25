@@ -38,4 +38,8 @@ export class UsuarioService {
     await this.userRepo.delete(id);
     return true;
   }
+
+  findByEmail(correoInstitucional: string){
+    return this.userRepo.findOne({ where: { correoInstitucional } });
+  }
 }

@@ -5,6 +5,9 @@ import { Repository } from 'typeorm';
 import { Usuario } from '../entities/usuario.entity';
 import { CrearUsuarioDto } from '../dtos/usuario.dto';
 import { ActualizarUsuarioDto } from '../dtos/usuario.dto';
+import * as bcrypt from 'bcrypt';
+
+
 @Injectable()
 export class UsuarioService {
   constructor(
@@ -23,8 +26,10 @@ export class UsuarioService {
     return usuario;
   }
 
-  create(body: CrearUsuarioDto) {
+  async create(body: CrearUsuarioDto) {
     const newUser = this.userRepo.create(body); // hace un match
+    const hashPassword = await bcrypt.hash(newUser.password, 10);
+    newUser.password = hashPassword;
     return this.userRepo.save(newUser);
   }
 

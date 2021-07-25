@@ -8,6 +8,7 @@ import {
   JoinColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  Unique,
 } from 'typeorm';
 import {
   IsDate,
@@ -55,7 +56,7 @@ export class Usuario {
   /*@IsNotEmpty()*/
   respuestas: Respuesta[];
 
-  @Column({ name: 'correoInstitucional' })
+  @Column({ name: 'correoInstitucional', unique: true })
   //@ValidationTypes.isValid(correoIn);
   @IsEmail()
   @IsNotEmpty()
@@ -93,7 +94,6 @@ export class Usuario {
   @MinLength(8)
   @IsNotEmpty()
   @IsString()
-  @Exclude()
   password: string;
 
   @CreateDateColumn({

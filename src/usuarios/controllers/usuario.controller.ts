@@ -31,9 +31,6 @@ export class UsuarioController {
 
   @Post()
   async create(@Body() usuario: CrearUsuarioDto) {
-    const nuevoUsuario = await this._httpUserService.create(usuario);
-    const hashPassword = await bcrypt.hash(nuevoUsuario.password, 10);
-    nuevoUsuario.password = hashPassword;
     return this._httpUserService.create(usuario);
   }
 

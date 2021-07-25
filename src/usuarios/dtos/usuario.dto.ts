@@ -30,7 +30,7 @@ export class CrearUsuarioDto {
   @IsString()
   @IsNotEmpty()
   @ApiProperty()
-  readonly correo_institucional: string;
+  readonly correoInstitucional: string;
   @IsString()
   @IsNotEmpty()
   @ApiProperty()
@@ -39,10 +39,9 @@ export class CrearUsuarioDto {
   @IsNotEmpty()
   @ApiProperty()
   readonly apellidos: string;
-  @IsDate()
   @IsNotEmpty()
   @ApiProperty()
-  readonly fecha_nacimiento: Date;
+  readonly fechaNacimiento: Date;
   @IsString()
   @IsNotEmpty()
   @ApiProperty()

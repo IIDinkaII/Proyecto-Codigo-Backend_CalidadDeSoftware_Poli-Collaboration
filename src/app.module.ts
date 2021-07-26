@@ -27,6 +27,7 @@ import { AuthModule } from './auth/auth.module';
         PASSWORD: Joi.string().required(),
         DATABASE_PORT: Joi.number().required(),
         API_KET: Joi.string(),
+        JWT_SECRET: Joi.string().required(),
       }),
     }),
     DatabaseModule,

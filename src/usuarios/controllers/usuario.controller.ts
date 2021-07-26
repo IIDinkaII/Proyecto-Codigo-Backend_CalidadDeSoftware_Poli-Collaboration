@@ -7,12 +7,17 @@ import {
   ParseIntPipe,
   Post,
   Put,
+  UseGuards,
 } from '@nestjs/common';
 import { UsuarioService } from '../services/usuario.service';
 import { CrearUsuarioDto, ActualizarUsuarioDto } from '../dtos/usuario.dto';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import * as bcrypt from 'bcrypt';
+import { AuthGuard } from '@nestjs/passport';
+import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
+import { Public } from 'src/auth/decorators/public.decorator';
 
+@UseGuards(JwtAuthGuard)
 @ApiTags('usuario')
 @Controller('api/usuario')
 export class UsuarioController {
@@ -24,6 +29,7 @@ export class UsuarioController {
     return this._httpUserService.findAll();
   }
 
+  @Public()
   @Get(':id')
   getOne(@Param('id', ParseIntPipe) id: number) {
     return this._httpUserService.findOne(id);

@@ -10,6 +10,6 @@ export class AppService {
 
   getHello(): string {
     console.log(this.configProject.database.name);
-    return 'Proyecto A.D.A.M';
+    return 'Proyecto A.D.A.M - Poli Collaboration';
   }
 }

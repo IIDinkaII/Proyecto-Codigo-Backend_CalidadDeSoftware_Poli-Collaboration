@@ -26,29 +26,33 @@ export class UsuarioController {
 
   @Roles(Role.ADMIN)
   @Get()
-  @ApiOperation({ summary: 'Lista de usuarios' })
+  @ApiOperation({ summary: 'Lista de usuarios de la aplicación.' })
   getAll() {
     return this._httpUserService.findAll();
   }
 
   @Public()
   @Get(':id')
+  @ApiOperation({ summary: 'Obtener un usuario según su Id' })
   getOne(@Param('id', ParseIntPipe) id: number) {
     return this._httpUserService.findOne(id);
   }
 
-
+  @Public()
   @Post()
+  @ApiOperation({ summary: 'Crear un usuario' })
   async create(@Body() usuario: CrearUsuarioDto) {
     return this._httpUserService.create(usuario);
   }
 
   @Put(':id')
+  @ApiOperation({ summary: 'Actualizar un usuario' })
   update(@Param('id') id: number, @Body() body: ActualizarUsuarioDto) {
     return this._httpUserService.update(id, body);
   }
 
   @Delete(':id')
+  @ApiOperation({ summary: 'Eliminar un usuario' })
   delete(@Param('id') id: number) {
     return this._httpUserService.delete(id);
   }

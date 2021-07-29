@@ -90,6 +90,7 @@ export class Usuario {
   @IsString()
   facultad: string;
 
+  @Exclude()
   @Column({ name: 'password' })
   @MinLength(8)
   @IsNotEmpty()

@@ -33,7 +33,5 @@ export class DenunciaService {
         const denuncia = await this.denunciaRepo.findOne(id);
         this.denunciaRepo.merge(denuncia, body);
         return this.denunciaRepo.save(denuncia);
-      }
-
-
+    }
 }

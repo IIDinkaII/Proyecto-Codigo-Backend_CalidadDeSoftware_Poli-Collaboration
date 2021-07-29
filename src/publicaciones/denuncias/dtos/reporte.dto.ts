@@ -4,16 +4,17 @@ import {
     IsNotEmpty,
   } from 'class-validator';
   import { ApiProperty } from '@nestjs/swagger';
+  import { PartialType } from '@nestjs/swagger';
   
   export class CrearReporteDto {
     @IsString()
     @IsNotEmpty()
     @ApiProperty()
     readonly accionesTomadas: string;
-    @IsString()
-    @IsNotEmpty()
-    @ApiProperty()
-    readonly responsables: string;
+    //@IsString()
+    //@IsNotEmpty()
+    //@ApiProperty()
+    //readonly responsables: string;
     @IsString()
     @IsNotEmpty()
     @ApiProperty()
@@ -28,3 +29,4 @@ import {
     readonly ultimaActualizacion: Date;
   }
   
+  export class ActualizarReporteDTO extends PartialType(CrearReporteDto) {}

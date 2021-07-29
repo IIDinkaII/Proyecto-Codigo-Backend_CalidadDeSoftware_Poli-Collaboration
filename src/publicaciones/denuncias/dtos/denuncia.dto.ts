@@ -33,4 +33,4 @@ export class CrearDenunciaDTO {
     readonly adjunto: string;
 }
 
-export class ActualizarUsuarioDto extends PartialType(CrearDenunciaDTO) {}
+export class ActualizarDenunciaDTO extends PartialType(CrearDenunciaDTO) {}

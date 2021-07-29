@@ -24,14 +24,13 @@ import { RolesGuard } from 'src/auth/guards/roles.guard';
 export class UsuarioController {
   constructor(private _httpUserService: UsuarioService) {}
 
-  @Roles(Role.ADMIN)
+  @Roles(Role.ESTUDIANTE)
   @Get()
   @ApiOperation({ summary: 'Lista de usuarios de la aplicación.' })
   getAll() {
     return this._httpUserService.findAll();
   }
 
-  @Public()
   @Get(':id')
   @ApiOperation({ summary: 'Obtener un usuario según su Id' })
   getOne(@Param('id', ParseIntPipe) id: number) {

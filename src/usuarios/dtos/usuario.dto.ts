@@ -15,19 +15,6 @@ import { PartialType } from '@nestjs/swagger';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CrearUsuarioDto {
-  @IsOptional()
-  @IsPositive()
-  @ApiProperty()
-  readonly idUsuario: number;
-  @IsOptional()
-  @IsPositive()
-  @ApiProperty()
-  readonly idEstadoUsuario: number;
-  @IsOptional()
-  @IsPositive()
-  @ApiProperty()
-  readonly idPerfilUsuario: number;
-  @IsString()
   @IsNotEmpty()
   @ApiProperty()
   readonly correoInstitucional: string;
@@ -46,10 +33,6 @@ export class CrearUsuarioDto {
   @IsNotEmpty()
   @ApiProperty()
   readonly carrera: string;
-  @IsString()
-  @IsNotEmpty()
-  @ApiProperty()
-  readonly facultad: string;
   @IsString()
   @IsNotEmpty()
   @ApiProperty()

@@ -1,0 +1,24 @@
+HOST = "poli.coi1ljpzniw0.us-west-1.rds.amazonaws.com"
+DATABASE_PORT = 5432
+DB_USERNAME = "postgres"
+PASSWORD = "admin123"
+DATABASE = "poli"
+PORT = 3000
+
+API_KEY='ABC123'
+
+JWT_SECRET='poli project alejo'
+
+TYPEORM_CONNECTION = postgres
+TYPEORM_HOST = poli.coi1ljpzniw0.us-west-1.rds.amazonaws.com
+TYPEORM_USERNAME = postgres
+TYPEORM_PASSWORD = admin123
+TYPEORM_DATABASE = poli
+TYPEORM_PORT = 5432
+TYPEORM_SYNCHRONIZE = false
+TYPEORM_LOGGING = true
+TYPEORM_ENTITIES = src/**/*.entity.ts
+
+TYPEORM_MIGRATIONS = src/database/migrations/*.ts
+TYPEORM_MIGRATIONS_DIR = src/database/migrations
+TYPEORM_MIGRATIONS_TABLE_NAME = migrations

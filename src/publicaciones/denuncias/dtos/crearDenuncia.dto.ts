@@ -6,7 +6,7 @@ import{
 
 import { ApiProperty } from '@nestjs/swagger';
 
-export class DenunciaDTO {
+export class CrearDenunciaDTO {
     @IsString()
     @IsNotEmpty()
     @ApiProperty()

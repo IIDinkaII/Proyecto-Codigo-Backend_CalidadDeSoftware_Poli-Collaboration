@@ -14,7 +14,7 @@ export class DenunciaService {
     findAll() {
         return this.userRepo.find();
     }
-
+    
     async create(body: CrearDenunciaDTO) {
         const denuncia = this.userRepo.create(body); // hace un match
         return this.userRepo.save(denuncia);

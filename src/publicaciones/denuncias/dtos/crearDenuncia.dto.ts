@@ -5,6 +5,7 @@ import{
 } from 'class-validator';
 
 import { ApiProperty } from '@nestjs/swagger';
+import { PartialType } from '@nestjs/swagger';
 
 export class CrearDenunciaDTO {
     @IsString()
@@ -31,3 +32,5 @@ export class CrearDenunciaDTO {
     @ApiProperty()
     readonly adjunto: string;
 }
+
+export class ActualizarUsuarioDto extends PartialType(CrearDenunciaDTO) {}

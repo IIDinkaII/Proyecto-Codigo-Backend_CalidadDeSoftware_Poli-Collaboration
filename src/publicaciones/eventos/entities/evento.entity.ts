@@ -8,7 +8,7 @@ import {
   JoinColumn,
 } from 'typeorm';
 import { CategoriaEvento } from './categoria-evento.entity';
-import { Publicacion } from '../../entities/publicacion.entity';
+//import { Publicacion } from '../../entities/publicacion.entity';
 import { IsDate, IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
 @Entity({ name: 'Evento' })
@@ -17,12 +17,12 @@ export class Evento {
   @IsNumber()
   @IsNotEmpty()
   idEvento: number;
-
+/*
   @OneToOne(() => Publicacion)
   @JoinColumn({ name: 'idPublicacion' })
   @IsNotEmpty()
   publicacion: Publicacion;
-
+*/
   @ManyToOne(() => CategoriaEvento, (categoria) => categoria.eventos)
   @JoinColumn({ name: 'idCategoria' })
   @IsNotEmpty()

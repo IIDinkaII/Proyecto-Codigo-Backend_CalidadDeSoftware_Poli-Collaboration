@@ -7,7 +7,8 @@ import {
   JoinColumn,
   CreateDateColumn
 } from 'typeorm';
-import { Publicacion } from './publicacion.entity';
+//import { Publicacion } from './publicacion.entity';
+import { Usuario } from 'src/usuarios/entities/usuario.entity';
 
 @Entity({ name: 'Revision' })
 export class Revision {
@@ -15,13 +16,13 @@ export class Revision {
   @IsNotEmpty()
   @IsNumber()
   idRevision: number;
-
+/*
   @OneToOne(() => Publicacion)
   @JoinColumn({ name: 'idPublicacion' })
   @IsNotEmpty()
   @IsNumber()
   idPublicacion: number;
-
+*/
   @Column({ name: 'observacion' })
   @IsNotEmpty()
   @IsString()
@@ -47,4 +48,15 @@ export class Revision {
   })
   @IsNotEmpty()
   fechaActualizacion: Date;
+
+  /*
+  @ManyToOne(() => Usuario, (usuario) => usuario.publicaciones)
+  @JoinColumn({ name: 'idUsuario' })
+  @IsNotEmpty()
+  usuario: Usuario;
+*/
+  @Column({ name: 'ultimaActualizacion' })
+  @IsDate()
+  @IsNotEmpty()
+  ultimaActualizacion: Date;
 }

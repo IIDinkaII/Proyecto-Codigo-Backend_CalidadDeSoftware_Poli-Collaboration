@@ -8,12 +8,12 @@ export class UsuarioRol {
   @PrimaryGeneratedColumn({ name: 'idUsuarioRol' })
   @IsNotEmpty()
   idUsuarioRol: number;
-
+/*
   @ManyToOne(() => Usuario, (usuario) => usuario.usuariosRol)
   @JoinColumn({ name: 'idUsuario' })
   @IsNotEmpty()
   usuario: Usuario;
-
+*/
   @ManyToOne(() => Rol, (rol) => rol.usuariosRol)
   @JoinColumn({ name: 'idRol' })
   @IsNotEmpty()

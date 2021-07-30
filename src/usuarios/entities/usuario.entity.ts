@@ -25,7 +25,7 @@ import {
 import { EstadoUsuario } from './estado-usuario.entity';
 import { UsuarioRol } from '../../entities/usuario-rol.entity';
 import { PerfilUsuario } from './pefil-usuario.entity';
-import { Publicacion } from '../../publicaciones/entities/publicacion.entity';
+//import { Publicacion } from '../../publicaciones/entities/publicacion.entity';
 import { Respuesta } from '../../publicaciones/preguntas/entities/respuesta.entity';
 import { Exclude } from 'class-transformer';
 //import { ValidationTypes } from 'class-validator';
@@ -43,14 +43,15 @@ export class Usuario {
   @JoinColumn({ name: 'idPerfilUsuario' })
   /*@IsNotEmpty()*/
   perfil: PerfilUsuario;
-
+  /*
   @OneToMany(() => UsuarioRol, (usuarioRol) => usuarioRol.usuario)
   /*@IsNotEmpty()*/
-  usuariosRol: UsuarioRol[];
+  //usuariosRol: UsuarioRol[];
 
-  @OneToMany(() => Publicacion, (publicacion) => publicacion.usuario)
+
+  //@OneToMany(() => Publicacion, (publicacion) => publicacion.usuario)
   /*@IsNotEmpty()*/
-  publicaciones: Publicacion[];
+  //publicaciones: Publicacion[];
 
   @OneToMany(() => Respuesta, (respuesta) => respuesta.usuario)
   /*@IsNotEmpty()*/
@@ -95,6 +96,12 @@ export class Usuario {
   @IsNotEmpty()
   @IsString()
   sexo: string;
+
+  @Column({ name: 'rol' })
+  @Length(5, 55)
+  @IsNotEmpty()
+  @IsString()
+  rol: string;
 
   @Exclude()
   @Column({ name: 'password' })

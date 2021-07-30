@@ -43,6 +43,10 @@ export class CrearUsuarioDto {
   @IsNotEmpty()
   @ApiProperty()
   password: string;
+  @IsString()
+  @IsNotEmpty()
+  @ApiProperty()
+  readonly sexo: string;
 }
 
 export class ActualizarUsuarioDto extends PartialType(CrearUsuarioDto) {}

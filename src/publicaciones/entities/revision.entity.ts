@@ -5,6 +5,7 @@ import {
   PrimaryGeneratedColumn,
   OneToOne,
   JoinColumn,
+  CreateDateColumn
 } from 'typeorm';
 import { Publicacion } from './publicacion.entity';
 
@@ -26,18 +27,24 @@ export class Revision {
   @IsString()
   observacion: string;
 
-  @Column({ name: 'fechaGestion' })
-  @IsDate()
+  @CreateDateColumn({
+    type: 'timestamptz',
+    default: () => 'CURRENT_TIMESTAMP',
+  })
   @IsNotEmpty()
   fechaGestion: Date;
 
-  @Column({ name: 'fechaCreacion' })
-  @IsDate()
+  @CreateDateColumn({
+    type: 'timestamptz',
+    default: () => 'CURRENT_TIMESTAMP',
+  })
   @IsNotEmpty()
   fechaCreacion: Date;
 
-  @Column({ name: 'fechaActualizacion' })
-  @IsDate()
+  @CreateDateColumn({
+    type: 'timestamptz',
+    default: () => 'CURRENT_TIMESTAMP',
+  })
   @IsNotEmpty()
   fechaActualizacion: Date;
 }

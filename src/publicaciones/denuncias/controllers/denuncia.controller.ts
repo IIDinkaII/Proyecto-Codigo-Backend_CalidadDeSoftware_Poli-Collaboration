@@ -19,7 +19,7 @@ import {DenunciaService} from '../services/denuncia.service'
 import {CrearDenunciaDTO, ActualizarDenunciaDTO} from '../dtos/denuncia.dto'
 
 @UseGuards(JwtAuthGuard, RolesGuard)
-@ApiTags('usuario')
+@ApiTags('denuncia')
 @Controller('api/denuncia')
 export class DenunciaController {
     constructor(private _httpDenunciaService: DenunciaService) {}
@@ -37,6 +37,8 @@ export class DenunciaController {
     getOne(@Param('id', ParseIntPipe) id: number) {
       return this._httpDenunciaService.findOne(id);
     }
+
+
 
     @Public()
     @Post()

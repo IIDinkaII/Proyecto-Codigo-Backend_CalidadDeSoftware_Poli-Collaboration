@@ -38,9 +38,6 @@ export class DenunciaController {
       return this._httpDenunciaService.findOne(id);
     }
 
-
-
-    @Public()
     @Post()
     @ApiOperation({ summary: 'Crear una denuncia' })
     async create(@Body() denuncia: CrearDenunciaDTO) {

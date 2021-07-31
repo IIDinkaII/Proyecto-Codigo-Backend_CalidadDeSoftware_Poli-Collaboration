@@ -53,13 +53,11 @@ export class Denuncia {
   @IsNotEmpty()
   adjunto: string;
 
-
-/*  
-  @ManyToOne(() => Usuario, (usuario) => usuario.publicaciones)
+  @ManyToOne(() => Usuario, (usuario) => usuario.denuncias)
   @JoinColumn({ name: 'idUsuario' })
   @IsNotEmpty()
   usuario: Usuario;
-*/
+
   @Column({ name: 'fechaCreacion' })
   @IsDate()
   @IsNotEmpty()

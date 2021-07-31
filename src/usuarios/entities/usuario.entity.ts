@@ -28,6 +28,7 @@ import { PerfilUsuario } from './pefil-usuario.entity';
 //import { Publicacion } from '../../publicaciones/entities/publicacion.entity';
 import { Respuesta } from '../../publicaciones/preguntas/entities/respuesta.entity';
 import { Exclude } from 'class-transformer';
+import { Denuncia } from 'src/publicaciones/denuncias/entities/denuncia.entity';
 //import { ValidationTypes } from 'class-validator';
 
 @Entity('Usuario')
@@ -49,9 +50,9 @@ export class Usuario {
   //usuariosRol: UsuarioRol[];
 
 
-  //@OneToMany(() => Publicacion, (publicacion) => publicacion.usuario)
-  /*@IsNotEmpty()*/
-  //publicaciones: Publicacion[];
+  @OneToMany(() => Denuncia, (denuncia) => denuncia.usuario)
+  @IsNotEmpty()
+  denuncias: Denuncia[];
 
   @OneToMany(() => Respuesta, (respuesta) => respuesta.usuario)
   /*@IsNotEmpty()*/

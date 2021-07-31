@@ -58,5 +58,6 @@ export class DenunciaController {
     @ApiOperation({ summary: 'Actualizar estado de una denuncia' })
     updateState(@Param('updateState') id: number, @Body() body: ActualizarEstadoDenunciaDTO) {
       return this._httpDenunciaService.updateState(id, body);
+      
     }
 }

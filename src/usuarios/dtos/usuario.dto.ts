@@ -51,7 +51,7 @@ export class CrearUsuarioDto {
   @IsNumber()
   @IsNotEmpty()
   @ApiProperty()
-  readonly idUsuario: number;
+  readonly usuario: number;
 }
 
 export class ActualizarUsuarioDto extends PartialType(CrearUsuarioDto) {}

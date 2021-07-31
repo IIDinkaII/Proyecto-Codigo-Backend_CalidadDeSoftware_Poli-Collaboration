@@ -6,9 +6,12 @@ import {
   OneToMany,
   OneToOne,
   JoinColumn,
+  CreateDateColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 import { IsDate, IsNotEmpty, IsNumber, IsString } from 'class-validator';
 import { Usuario } from 'src/usuarios/entities/usuario.entity';
+import { Exclude } from 'class-transformer';
 //import { Publicacion } from 'src/publicaciones/entities/publicacion.entity';
 
 @Entity({ name: 'Denuncia' })
@@ -58,13 +61,16 @@ export class Denuncia {
   @IsNotEmpty()
   usuario: Usuario;
 
-  @Column({ name: 'fechaCreacion' })
-  @IsDate()
-  @IsNotEmpty()
+  @CreateDateColumn({
+    type: 'timestamptz',
+    default: () => 'CURRENT_TIMESTAMP',
+  })
   fechaCreacion: Date;
 
-  @Column({ name: 'ultimaActualizacion' })
-  @IsDate()
-  @IsNotEmpty()
+  @Exclude()
+  @UpdateDateColumn({
+    type: 'timestamptz',
+    default: () => 'CURRENT_TIMESTAMP',
+  })
   ultimaActualizacion: Date;
 }

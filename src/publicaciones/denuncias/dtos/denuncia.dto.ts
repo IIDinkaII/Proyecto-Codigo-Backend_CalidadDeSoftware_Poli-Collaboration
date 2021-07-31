@@ -2,12 +2,17 @@ import{
     IsString,
     IsNotEmpty,
     IsOptional,
+    IsNumber,
 } from 'class-validator';
 
 import { ApiProperty } from '@nestjs/swagger';
 import { PartialType } from '@nestjs/swagger';
 
 export class CrearDenunciaDTO {
+    @IsNumber()
+    @IsNotEmpty()
+    @ApiProperty()
+    readonly idUsuario: number;
     @IsString()
     @IsNotEmpty()
     @ApiProperty()

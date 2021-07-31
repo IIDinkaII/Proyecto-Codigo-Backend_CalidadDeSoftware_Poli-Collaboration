@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsString, IsDate } from 'class-validator';
 import {
   Entity,
   Column,
@@ -10,7 +10,7 @@ import {
 } from 'typeorm';
 import { CategoriaPregunta } from './categoria-pregunta.entity';
 import { Pregunta } from './pregunta.entity';
-import { Publicacion } from '../../entities/publicacion.entity';
+//import { Publicacion } from '../../entities/publicacion.entity';
 import { Usuario } from '../../../usuarios/entities/usuario.entity';
 
 @Entity({ name: 'Respuesta' })
@@ -44,4 +44,14 @@ export class Respuesta {
   @IsNotEmpty()
   @IsString()
   estado: string;
+
+  @Column({ name: 'fechaCreacion' })
+  @IsDate()
+  @IsNotEmpty()
+  fechaCreacion: Date;
+
+  @Column({ name: 'ultimaActualizacion' })
+  @IsDate()
+  @IsNotEmpty()
+  ultimaActualizacion: Date;
 }

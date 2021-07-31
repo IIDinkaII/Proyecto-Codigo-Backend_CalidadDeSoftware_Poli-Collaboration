@@ -1,7 +1,7 @@
 import { EstadoUsuario } from '../entities/estado-usuario.entity';
 import { PerfilUsuario } from '../entities/pefil-usuario.entity';
 import { UsuarioRol } from '../../entities/usuario-rol.entity';
-import { Publicacion } from '../../publicaciones/entities/publicacion.entity';
+//import { Publicacion } from '../../publicaciones/entities/publicacion.entity';
 import { Respuesta } from '../../publicaciones/preguntas/entities/respuesta.entity';
 import {
   IsString,

@@ -41,7 +41,7 @@ export class UsuarioController {
   @Post()
   @ApiOperation({ summary: 'Crear un usuario' })
   async create(@Body() usuario: CrearUsuarioDto) {
-    let nuevoUsuario = {...usuario, facultad: "SISTEMAS"}
+    let nuevoUsuario = {...usuario, facultad: "SISTEMAS", rol: "estudiante"}
     return this._httpUserService.create(nuevoUsuario);
   }
 

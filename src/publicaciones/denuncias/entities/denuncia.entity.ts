@@ -8,7 +8,8 @@ import {
   JoinColumn,
 } from 'typeorm';
 import { IsDate, IsNotEmpty, IsNumber, IsString } from 'class-validator';
-import { Publicacion } from 'src/publicaciones/entities/publicacion.entity';
+import { Usuario } from 'src/usuarios/entities/usuario.entity';
+//import { Publicacion } from 'src/publicaciones/entities/publicacion.entity';
 
 @Entity({ name: 'Denuncia' })
 export class Denuncia {
@@ -16,12 +17,12 @@ export class Denuncia {
   @IsNumber()
   @IsNotEmpty()
   idDenuncia: number;
-
+/*
   @OneToOne(() => Publicacion)
   @JoinColumn({ name: 'idPublicacion' })
   @IsNotEmpty()
   publicacion: Publicacion;
-
+*/
   @Column({ name: 'modoCanal' })
   @IsString()
   @IsNotEmpty()
@@ -51,4 +52,19 @@ export class Denuncia {
   @IsString()
   @IsNotEmpty()
   adjunto: string;
+
+  @ManyToOne(() => Usuario, (usuario) => usuario.denuncias)
+  @JoinColumn({ name: 'idUsuario' })
+  @IsNotEmpty()
+  usuario: Usuario;
+
+  @Column({ name: 'fechaCreacion' })
+  @IsDate()
+  @IsNotEmpty()
+  fechaCreacion: Date;
+
+  @Column({ name: 'ultimaActualizacion' })
+  @IsDate()
+  @IsNotEmpty()
+  ultimaActualizacion: Date;
 }

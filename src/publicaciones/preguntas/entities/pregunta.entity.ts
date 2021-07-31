@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsString, IsDate } from 'class-validator';
 import {
   Entity,
   Column,
@@ -9,8 +9,8 @@ import {
   OneToMany,
 } from 'typeorm';
 import { CategoriaPregunta } from './categoria-pregunta.entity';
-import { Publicacion } from '../../entities/publicacion.entity';
 import { Respuesta } from './respuesta.entity';
+import { Usuario } from 'src/usuarios/entities/usuario.entity';
 
 @Entity({ name: 'Pregunta' })
 export class Pregunta {
@@ -18,12 +18,12 @@ export class Pregunta {
   @IsNumber()
   @IsNotEmpty()
   idPregunta: number;
-
+/*
   @OneToOne(() => Publicacion)
   @JoinColumn({ name: 'idPublicacion' })
   @IsNotEmpty()
   publicacion: Publicacion;
-
+*/
   @OneToMany(() => Respuesta, (respuesta) => respuesta.pregunta)
   @IsNotEmpty()
   respuestas: Respuesta[];
@@ -49,4 +49,19 @@ export class Pregunta {
   @IsString()
   @IsNotEmpty()
   estado: string;
+/*
+  @ManyToOne(() => Usuario, (usuario) => usuario.publicaciones)
+  @JoinColumn({ name: 'idUsuario' })
+  @IsNotEmpty()
+  usuario: Usuario;
+*/
+  @Column({ name: 'fechaCreacion' })
+  @IsDate()
+  @IsNotEmpty()
+  fechaCreacion: Date;
+
+  @Column({ name: 'ultimaActualizacion' })
+  @IsDate()
+  @IsNotEmpty()
+  ultimaActualizacion: Date;
 }

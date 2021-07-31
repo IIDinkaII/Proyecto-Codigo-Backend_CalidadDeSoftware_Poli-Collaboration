@@ -19,5 +19,4 @@ export class CrearRevisionDTO {
     readonly observacion: string;
  
 }
-
-export class ActualizarDenunciaDTO extends PartialType(CrearRevisionDTO) {}
+export class ActualizarRevisionDTO extends PartialType(CrearRevisionDTO) {}

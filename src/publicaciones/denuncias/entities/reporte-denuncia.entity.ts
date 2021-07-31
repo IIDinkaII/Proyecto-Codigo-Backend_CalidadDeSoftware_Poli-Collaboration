@@ -7,7 +7,7 @@ import {
   OneToOne,
   JoinColumn,
 } from 'typeorm';
-import { Revision } from '../../entities/revision.entity';
+import { Revision } from '../../revisiones/entities/revision.entity';
 import { IsDate, IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
 @Entity({ name: 'Reporte_Denuncia' })

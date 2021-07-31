@@ -4,11 +4,13 @@ import {
   Column,
   PrimaryGeneratedColumn,
   OneToOne,
+
   JoinColumn,
   CreateDateColumn
 } from 'typeorm';
 //import { Publicacion } from './publicacion.entity';
 import { Usuario } from 'src/usuarios/entities/usuario.entity';
+import { Denuncia } from 'src/publicaciones/denuncias/entities/denuncia.entity';
 
 @Entity({ name: 'Revision' })
 export class Revision {
@@ -16,6 +18,14 @@ export class Revision {
   @IsNotEmpty()
   @IsNumber()
   idRevision: number;
+
+    // add column explicitly here
+  @Column({ name: 'idDenuncia' })
+  idDenuncia: number;
+  @OneToOne(() => Denuncia, (denuncia) => denuncia.idDenuncia)
+  @JoinColumn({ name: 'idDenuncia' })
+  @IsNotEmpty()
+  denuncia: Denuncia;
 /*
   @OneToOne(() => Publicacion)
   @JoinColumn({ name: 'idPublicacion' })

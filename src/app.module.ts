@@ -12,6 +12,7 @@ import config from './config';
 import * as Joi from 'joi';
 import { DatabaseModule } from './database/database.module';
 import { AuthModule } from './auth/auth.module';
+import { RevisionesModule } from './publicaciones/revisiones/revisiones.module';
 
 @Module({
   imports: [
@@ -33,6 +34,7 @@ import { AuthModule } from './auth/auth.module';
     DatabaseModule,
     DenunciasModule,
     UsuarioModule,
+    RevisionesModule,
     AuthModule,
   ],
   controllers: [AppController],

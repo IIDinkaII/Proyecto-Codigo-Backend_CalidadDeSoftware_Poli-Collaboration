@@ -21,7 +21,6 @@ import {
   ActualizarDenunciaDTO,
   ActualizarEstadoDenunciaDTO,
 } from '../dtos/denuncia.dto';
-import { UsuarioService } from 'src/usuarios/services/usuario.service';
 
 @UseGuards(JwtAuthGuard, RolesGuard)
 @ApiTags('denuncia')
@@ -29,7 +28,6 @@ import { UsuarioService } from 'src/usuarios/services/usuario.service';
 export class DenunciaController {
   constructor(
     private _httpDenunciaService: DenunciaService,
-    private _httpUsuarioService: UsuarioService,
   ) {}
 
   @Roles(Role.MODERADOR)

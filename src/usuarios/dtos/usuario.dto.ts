@@ -13,6 +13,7 @@ import {
 } from 'class-validator';
 import { PartialType } from '@nestjs/swagger';
 import { ApiProperty } from '@nestjs/swagger';
+import internal from 'stream';
 
 export class CrearUsuarioDto {
   @IsString()
@@ -47,6 +48,10 @@ export class CrearUsuarioDto {
   @IsNotEmpty()
   @ApiProperty()
   readonly sexo: string;
+  @IsNumber()
+  @IsNotEmpty()
+  @ApiProperty()
+  readonly idUsuario: number;
 }
 
 export class ActualizarUsuarioDto extends PartialType(CrearUsuarioDto) {}

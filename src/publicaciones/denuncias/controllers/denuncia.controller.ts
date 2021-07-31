@@ -28,8 +28,21 @@ export class DenunciaController {
     @Roles(Role.MODERADOR)
     @Get()
     @ApiOperation({ summary: 'Lista de usuarios de la aplicación.' })
-    getAll() {
-      return this._httpDenunciaService.findAll();
+    async getAll(){
+      let denunciasObtenidas = await this._httpDenunciaService.findAll();
+      let denunciasMostradas = denunciasObtenidas.map((denuncia) => {
+        if (denuncia.modoCanal === 'No confidencial') {
+          return {
+            ...denuncia,
+            //usuario: `${denuncia.usuario.nombres} ${denuncia.usuario.apellidos}`,
+            usuario: `${denuncia.usuario}`,
+          };
+        }else {
+          return denuncia;
+        }
+      });
+      console.log(denunciasMostradas)
+      return denunciasMostradas;
     }
 
     @Get(':id')
@@ -55,6 +68,6 @@ export class DenunciaController {
     @ApiOperation({ summary: 'Actualizar estado de una denuncia' })
     updateState(@Param('updateState') id: number, @Body() body: ActualizarEstadoDenunciaDTO) {
       return this._httpDenunciaService.updateState(id, body);
-      
+
     }
 }

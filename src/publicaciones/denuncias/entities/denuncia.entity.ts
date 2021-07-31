@@ -20,7 +20,7 @@ export class Denuncia {
   @IsNumber()
   @IsNotEmpty()
   idDenuncia: number;
-/*
+  /*
   @OneToOne(() => Publicacion)
   @JoinColumn({ name: 'idPublicacion' })
   @IsNotEmpty()
@@ -55,6 +55,10 @@ export class Denuncia {
   @IsString()
   @IsNotEmpty()
   adjunto: string;
+
+  // add column explicitly here
+  @Column({ name: 'idUsuario' })
+  idUsuario: number;
 
   @ManyToOne(() => Usuario, (usuario) => usuario.denuncias)
   @JoinColumn({ name: 'idUsuario' })

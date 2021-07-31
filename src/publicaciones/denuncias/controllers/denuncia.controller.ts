@@ -21,6 +21,7 @@ import {
   ActualizarDenunciaDTO,
   ActualizarEstadoDenunciaDTO,
 } from '../dtos/denuncia.dto';
+import { UsuarioService } from 'src/usuarios/services/usuario.service';
 
 @UseGuards(JwtAuthGuard, RolesGuard)
 @ApiTags('denuncia')
@@ -28,6 +29,7 @@ import {
 export class DenunciaController {
   constructor(
     private _httpDenunciaService: DenunciaService,
+    private _httpUsuarioService: UsuarioService,
   ) {}
 
   @Roles(Role.MODERADOR)
@@ -35,18 +37,24 @@ export class DenunciaController {
   @ApiOperation({ summary: 'Lista de usuarios de la aplicación.' })
   async getAll() {
     let denunciasObtenidas = await this._httpDenunciaService.findAll();
-    let denunciasMostradas = denunciasObtenidas.map((denuncia) => {
+    let denunciasMostradas = [];
+    for (const denuncia of denunciasObtenidas) {
       if (denuncia.modoCanal === 'No confidencial') {
-        return {
-          ...denuncia,
-          //usuario: `${denuncia.usuario.nombres} ${denuncia.usuario.apellidos}`,
-          usuario: `${denuncia.usuario}`,
-        };
+        if (denuncia.idUsuario) {
+          let usuario = await this._httpUsuarioService.findOne(
+            denuncia.idUsuario,
+          );
+          denunciasMostradas.push({
+            ...denuncia,
+            usuario: `${usuario.nombres} ${usuario.apellidos}`,
+          });
+        } else {
+          denunciasMostradas.push(denuncia);
+        }
       } else {
-        return denuncia;
+        denunciasMostradas.push(denuncia);
       }
-    });
-    console.log(denunciasMostradas);
+    }
     return denunciasMostradas;
   }
 

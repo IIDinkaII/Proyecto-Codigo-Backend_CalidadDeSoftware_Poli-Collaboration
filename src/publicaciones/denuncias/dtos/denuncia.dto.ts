@@ -39,3 +39,12 @@ export class CrearDenunciaDTO {
 }
 
 export class ActualizarDenunciaDTO extends PartialType(CrearDenunciaDTO) {}
+
+export class ActualizarEstadoDenunciaDTO{
+    @IsOptional()
+    @IsNotEmpty()
+    @ApiProperty()
+    readonly estado: tiposEstado;
+}
+
+type tiposEstado = "En revisión"|"Creado"|"Finalizado"

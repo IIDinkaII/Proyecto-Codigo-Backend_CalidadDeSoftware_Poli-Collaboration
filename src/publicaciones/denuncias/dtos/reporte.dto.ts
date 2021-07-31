@@ -30,3 +30,4 @@ import {
   }
   
   export class ActualizarReporteDTO extends PartialType(CrearReporteDto) {}
+

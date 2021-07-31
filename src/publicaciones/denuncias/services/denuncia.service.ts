@@ -4,7 +4,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { NotFoundError } from 'rxjs';
 //import * as bcrypt from 'bcrypt';
-import {CrearDenunciaDTO, ActualizarDenunciaDTO} from '../dtos/denuncia.dto'
+import {CrearDenunciaDTO, ActualizarDenunciaDTO, ActualizarEstadoDenunciaDTO} from '../dtos/denuncia.dto'
 
 @Injectable()
 export class DenunciaService {
@@ -34,4 +34,11 @@ export class DenunciaService {
         this.denunciaRepo.merge(denuncia, body);
         return this.denunciaRepo.save(denuncia);
     }
+
+    async updateState(id: number, body: ActualizarEstadoDenunciaDTO){
+      const denuncia = await this.denunciaRepo.findOne(id);
+      this.denunciaRepo.merge(denuncia, body);
+      return this.denunciaRepo.save(denuncia);
+  }
+
 }

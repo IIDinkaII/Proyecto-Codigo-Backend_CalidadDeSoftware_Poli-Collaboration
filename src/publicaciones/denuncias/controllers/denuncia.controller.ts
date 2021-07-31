@@ -16,7 +16,7 @@ import { Roles } from 'src/auth/decorators/roles.decorator';
 import { Role } from 'src/auth/models/roles.model';
 import { RolesGuard } from 'src/auth/guards/roles.guard';
 import {DenunciaService} from '../services/denuncia.service'
-import {CrearDenunciaDTO, ActualizarDenunciaDTO} from '../dtos/denuncia.dto'
+import {CrearDenunciaDTO, ActualizarDenunciaDTO, ActualizarEstadoDenunciaDTO} from '../dtos/denuncia.dto'
 
 @UseGuards(JwtAuthGuard, RolesGuard)
 @ApiTags('denuncia')
@@ -28,8 +28,21 @@ export class DenunciaController {
     @Roles(Role.MODERADOR)
     @Get()
     @ApiOperation({ summary: 'Lista de usuarios de la aplicación.' })
-    getAll() {
-      return this._httpDenunciaService.findAll();
+    async getAll(){
+      let denunciasObtenidas = await this._httpDenunciaService.findAll();
+      let denunciasMostradas = denunciasObtenidas.map((denuncia) => {
+        if (denuncia.modoCanal === 'No confidencial') {
+          return {
+            ...denuncia,
+            //usuario: `${denuncia.usuario.nombres} ${denuncia.usuario.apellidos}`,
+            usuario: `${denuncia.usuario}`,
+          };
+        }else {
+          return denuncia;
+        }
+      });
+      console.log(denunciasMostradas)
+      return denunciasMostradas;
     }
 
     @Get(':id')
@@ -52,5 +65,9 @@ export class DenunciaController {
       return this._httpDenunciaService.update(id, body);
     }
 
-
+    @Put(':id')
+    @ApiOperation({ summary: 'Actualizar estado de una denuncia' })
+    updateState(@Param('updateState') id: number, @Body() body: ActualizarEstadoDenunciaDTO) {
+      return this._httpDenunciaService.updateState(id, body);
+    }
 }

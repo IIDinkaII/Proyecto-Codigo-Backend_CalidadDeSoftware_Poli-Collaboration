@@ -5,11 +5,13 @@ import { Repository } from 'typeorm';
 import { NotFoundError } from 'rxjs';
 //import * as bcrypt from 'bcrypt';
 import {CrearDenunciaDTO, ActualizarDenunciaDTO, ActualizarEstadoDenunciaDTO} from '../dtos/denuncia.dto'
+import { UsuarioService } from 'src/usuarios/services/usuario.service';
 
 @Injectable()
 export class DenunciaService {
     constructor(
         @InjectRepository(Denuncia) private denunciaRepo: Repository<Denuncia>,
+        private usuarioService : UsuarioService
       ) {}
     
     findAll() {
@@ -25,8 +27,14 @@ export class DenunciaService {
       }
 
     async create(body: CrearDenunciaDTO) {
-        const denuncia = this.denunciaRepo.create(body); // hace un match
-        return this.denunciaRepo.save(denuncia);
+        let nuevaDenuncia = this.denunciaRepo.create(body);
+        if(body.idUsuario){
+          let usuario = await this.usuarioService.findOne(body.idUsuario)
+          if(usuario){
+             nuevaDenuncia.usuario = usuario;
+          }
+        }
+        return this.denunciaRepo.save(nuevaDenuncia);
     }
 
     async update(id: number, body: ActualizarDenunciaDTO) {

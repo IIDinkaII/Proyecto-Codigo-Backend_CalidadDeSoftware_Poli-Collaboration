@@ -16,7 +16,7 @@ import { Roles } from 'src/auth/decorators/roles.decorator';
 import { Role } from 'src/auth/models/roles.model';
 import { RolesGuard } from 'src/auth/guards/roles.guard';
 import {DenunciaService} from '../services/denuncia.service'
-import {CrearDenunciaDTO, ActualizarDenunciaDTO, ActualizarEstadoDenunciaDTO} from '../dtos/denuncia.dto'
+import {CrearDenunciaDTO, ActualizarDenunciaDTO} from '../dtos/denuncia.dto'
 
 @UseGuards(JwtAuthGuard, RolesGuard)
 @ApiTags('denuncia')
@@ -38,6 +38,7 @@ export class DenunciaController {
       return this._httpDenunciaService.findOne(id);
     }
 
+    @Public()
     @Post()
     @ApiOperation({ summary: 'Crear una denuncia' })
     async create(@Body() denuncia: CrearDenunciaDTO) {
@@ -51,10 +52,5 @@ export class DenunciaController {
       return this._httpDenunciaService.update(id, body);
     }
 
-    @Put(':id')
-    @ApiOperation({ summary: 'Actualizar estado de una denuncia' })
-    updateState(@Param('updateState') id: number, @Body() body: ActualizarEstadoDenunciaDTO) {
-      return this._httpDenunciaService.updateState(id, body);
-      
-    }
+
 }
